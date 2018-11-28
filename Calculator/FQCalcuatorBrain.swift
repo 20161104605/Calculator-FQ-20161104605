@@ -10,8 +10,7 @@ import Foundation
 struct CalcuatorBrain {
     
     private(set) var result: Double? {
-        // 当结果发生改变时候，将它设置为下次可能作为的操作数
-        // 这样可以继续，计算其他的
+        // 当结果发生改变时候，将它设置为下次可能作为的操作数，这样可以继续，计算其他的
         didSet {
             if result != nil {
                 operand = result
@@ -22,7 +21,6 @@ struct CalcuatorBrain {
     private var operand: Double?
     
     private var pendingOperation: PendingBinaryOperation?
-    
     // 设置操作数
     mutating func setOperand(_ operand: Double) {
         self.operand = operand
@@ -32,7 +30,7 @@ struct CalcuatorBrain {
     // 执行计算
     mutating func performOperation(_ symbol: String) {
         
-        // 这里 强制 解包 以此发现bug ，按道理一定能得到
+        // 这里强制解包以此发现bug ，按道理一定能得到
         let operation = operations[symbol]!
         
         switch operation {
@@ -55,7 +53,6 @@ struct CalcuatorBrain {
             }
         }
     }
-    
     // 等待中的操作数和操作符
     private struct PendingBinaryOperation {
         let firstOperand: Double
@@ -64,8 +61,6 @@ struct CalcuatorBrain {
             return operation(firstOperand,secoundOperand)
         }
     }
-    
-    
     // 定义操作类型
     private enum Operation {
         // 常量操作
@@ -77,8 +72,7 @@ struct CalcuatorBrain {
         // ..equal
         case equal
     }
-    
-    // 定于 操作符 对应的操作
+    // 定义对应的操作
     private var operations: [String: Operation] = [
         "AC":   .constant(0),   // 清空，直接返回0
         "±" :   .unary({-$0}),
