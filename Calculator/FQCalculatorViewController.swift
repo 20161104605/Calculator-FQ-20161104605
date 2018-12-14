@@ -3,7 +3,7 @@
 //  Calculator
 //
 //  Created by FuQiang  on 2018/11/14.
-//  Copyright © 2018年 FuQiang. All rights reserved.
+//  Copyright © 2018年 FuQiang. All rights reserved. V3.0
 import UIKit
 
 class CalculatorViewController: UIViewController {
@@ -21,16 +21,12 @@ class CalculatorViewController: UIViewController {
             }
         }
     }
-    
     var brain = CalcuatorBrain()
-    
     var userIsInTyping: Bool = false
-
     @IBAction func touchDigit(_ sender: UIButton) {
-        
         let digit = sender.currentTitle!
         let textCurrentInDisplay = displayVlaueOutlet.text!
-        // 如果正在输入中
+        // 记录状态,(输入状态)
         if userIsInTyping {
             if digit == "0" && textCurrentInDisplay == "0" {
                 displayVlaueOutlet.text = "0"
@@ -49,8 +45,6 @@ class CalculatorViewController: UIViewController {
             userIsInTyping = true
         }
     }
-    
-    
     @IBAction func performOperation(_ sender: UIButton) {
         // 1. 设置操作数
         if userIsInTyping {
@@ -67,8 +61,6 @@ class CalculatorViewController: UIViewController {
     }
     
 }
-
-
 extension CalculatorViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
