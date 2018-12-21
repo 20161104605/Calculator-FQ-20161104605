@@ -1,7 +1,5 @@
-//
 //  CalculatorViewController.swift
 //  Calculator
-//
 //  Created by FuQiang  on 2018/11/14.
 //  Copyright © 2018年 FuQiang. All rights reserved. V3.0
 import UIKit
@@ -36,7 +34,6 @@ class CalculatorViewController: UIViewController {
             }
         }
         else {
-            
             if digit == "." {
                 displayVlaueOutlet.text = "0."
             }else {
@@ -59,7 +56,6 @@ class CalculatorViewController: UIViewController {
             displayValue = result
         }
     }
-    
 }
 extension CalculatorViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
